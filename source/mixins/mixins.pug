@@ -1,0 +1,11 @@
+mixin virtue(animal, attribute)
+    div.flexCol.textAlignCenter
+        span= animal
+        span= attribute
+        input(type="number", name=`attr_${attribute}` value="0").textAlignCenter
+
+mixin virtueOption(attribute)
+    option(value=attribute)= attribute
+
+mixin textInput(section, name)
+    input(type="text", name=`attr_${section}-${name}`)

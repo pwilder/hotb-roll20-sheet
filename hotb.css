@@ -1,0 +1,217 @@
+/* By deafult, hides all archetypes*/
+.charsheet .pc,
+.charsheet .npc {
+  display: none;
+}
+.invisible {
+  display: none;
+}
+/* show the selected archetype */
+.charsheet .sheet-typetoggle[value="pc"] ~ div.pc,
+.charsheet .sheet-typetoggle[value="npc"] ~ div.npc {
+  display: block;
+}
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.spaceBetween {
+  justify-content: space-around;
+}
+.flexGap10 {
+  gap: 10px;
+}
+.marginTop10 {
+  margin-top: 10px;
+}
+.marginTop50 {
+  margin-top: 50px;
+}
+.textAlignCenter {
+  text-align: center;
+}
+div.keyValueInput {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-gap: 5px;
+  align-items: center;
+}
+div.keyValueInput label {
+  text-align: right;
+  margin-bottom: 0;
+}
+div.keyValueInput label:after {
+  content: ":";
+}
+.width100 {
+  width: 100%;
+}
+.width65 {
+  width: 65%;
+}
+.repcontainer[data-groupname="repeating_devotions"] > .repitem {
+  margin: 10px;
+}
+/* Smaller margins - remove these if you want the huge default left margin */
+.sheet-rolltemplate-custom {
+  margin-left: -37px;
+}
+.withoutavatars .sheet-rolltemplate-custom {
+  margin-left: -7px;
+}
+.sheet-rolltemplate-custom .sheet-container {
+  border: 1px solid;
+  /* by default, the border is the same color as the header. You can change this here, e.g. to black */
+  border-color: var(--header-bg-color);
+}
+/* Header formatting - title and subtitle */
+.sheet-rolltemplate-custom .sheet-header {
+  background-color: var(--header-bg-color);
+  /* change text-align to center to center the header text */
+  text-align: left;
+  color: var(--header-text-color);
+  padding: 5px;
+}
+.sheet-rolltemplate-custom .sheet-title {
+  font-size: 1.1em;
+}
+.sheet-rolltemplate-custom .sheet-subtitle {
+  font-size: .9em;
+}
+/* example colors */
+.sheet-rolltemplate-custom .sheet-container {
+  /* this is the default color */
+  --header-bg-color: rgba(112,32,130,1);
+  --header-text-color: #FFF;
+}
+.sheet-rolltemplate-custom .sheet-container.sheet-color-red {
+  --header-bg-color: #F00;
+}
+.sheet-rolltemplate-custom .sheet-container.sheet-color-green {
+  --header-bg-color: #0F0;
+  --header-text-color: #000;
+}
+/* Allprops part */
+.sheet-rolltemplate-custom .sheet-content {
+  display: grid;
+  background: #FFF;
+  /* Header formatting - modify the column layout below */
+  grid-template-columns: auto auto;
+  /* Line height to match default roll template */
+  line-height: 1.4em;
+}
+.sheet-rolltemplate-custom .sheet-content > div {
+  padding: 5px;
+}
+/* Left column */
+.sheet-rolltemplate-custom .sheet-content .sheet-key {
+  font-weight: bold;
+  padding-right: 10px;
+  text-align: right;
+}
+/* Empty rule, use this if you want to change the right column
+.sheet-rolltemplate-custom .sheet-value {
+}
+*/
+/* Make even-numbered rows grey */
+.sheet-rolltemplate-custom .sheet-content :nth-child(4n+3),
+.sheet-rolltemplate-custom .sheet-content :nth-child(4n) {
+  background: #EEE;
+}
+/* Description field */
+.sheet-rolltemplate-custom .sheet-desc {
+  grid-column: span 2;
+  padding: 5px;
+  text-align: center;
+}
+/* New styles */
+/* PC Tabs */
+.charsheet .sheet-concept,
+.charsheet .sheet-devotions,
+.charsheet .sheet-aspects,
+.charsheet .sheet-maneuvers,
+.charsheet .sheet-contacts,
+.charsheet .sheet-invokes,
+.charsheet .sheet-equipment,
+.charsheet .sheet-notes {
+  display: none;
+}
+/* style the active button */
+.charsheet .sheet-tabstoggle[value="concept"] ~ div .sheet-button0 {
+  outline: 2px solid red;
+}
+.charsheet .sheet-tabstoggle[value="devotions"] ~ div .sheet-button1 {
+  outline: 2px solid red;
+}
+.charsheet .sheet-tabstoggle[value="aspects"] ~ div .sheet-button2 {
+  outline: 2px solid red;
+}
+.charsheet .sheet-tabstoggle[value="maneuvers"] ~ div .sheet-button3 {
+  outline: 2px solid red;
+}
+.charsheet .sheet-tabstoggle[value="contacts"] ~ div .sheet-button4 {
+  outline: 2px solid red;
+}
+.charsheet .sheet-tabstoggle[value="invokes"] ~ div .sheet-button5 {
+  outline: 2px solid red;
+}
+.charsheet .sheet-tabstoggle[value="equipment"] ~ div .sheet-button6 {
+  outline: 2px solid red;
+}
+.charsheet .sheet-tabstoggle[value="notes"] ~ div .sheet-button7 {
+  outline: 2px solid red;
+}
+/* show the selected tab */
+.charsheet .sheet-tabstoggle[value="concept"] ~ div.sheet-concept,
+.charsheet .sheet-tabstoggle[value="devotions"] ~ div.sheet-devotions,
+.charsheet .sheet-tabstoggle[value="aspects"] ~ div.sheet-aspects,
+.charsheet .sheet-tabstoggle[value="maneuvers"] ~ div.sheet-maneuvers,
+.charsheet .sheet-tabstoggle[value="contacts"] ~ div.sheet-contacts,
+.charsheet .sheet-tabstoggle[value="invokes"] ~ div.sheet-invokes,
+.charsheet .sheet-tabstoggle[value="equipment"] ~ div.sheet-equipment,
+.charsheet .sheet-tabstoggle[value="notes"] ~ div.sheet-notes {
+  display: block;
+}
+/*Grid properties*/
+.form-group {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.form-group label {
+  text-align: right;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+}
+.long-second {
+  grid-template-columns: 1fr 5fr;
+}
+.double-row {
+  grid-template-columns: 2fr 4fr 1fr 1fr;
+}
+/* Show/hide */
+.charsheet .sheet-columns {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+}
+.charsheet .sheet-columns > * {
+  flex: 1;
+}
+.charsheet input.sheet-toggle-show:not(:checked) ~ div div.sheet-body {
+  display: none;
+}
+.item {
+  margin: 4px 0;
+  padding: 0 4px;
+  border: 2px solid transparent;
+}

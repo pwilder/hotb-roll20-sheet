@@ -1,0 +1,9 @@
+h2 Contacts
+fieldset.repeating_contact
+    div.form-group.double-row
+        label Name
+        +textInput("contacts", "name")
+        label Status
+        select(name="attr_contacts-status")
+            option(value="contact") Contact
+            option(value="friend") Friend

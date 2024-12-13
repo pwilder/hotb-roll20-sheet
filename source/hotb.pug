@@ -1,0 +1,9 @@
+include ./mixins/mixins.pug
+
+div
+    label Sheet Type:
+        select(name="attr_sheetType")
+            option(value="pc", selected="true") PC
+            option(value="npc") NPC
+|
+include ./sheets/pc.pug

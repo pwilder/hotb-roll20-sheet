@@ -1,0 +1,15 @@
+h2 Aspects
+fieldset.repeating_aspect
+    div.flexRow.flexGap10
+        input(type="checkbox").sheet-toggle-show
+        div.width65
+            div.form-group
+                label Name
+                +textInput("aspects", "name")
+            div.form-group.sheet-body
+                label Invoke
+                +textInput("aspects", "invoke")
+                label Tag
+                +textInput("aspects", "tag")
+                label Compel
+                +textInput("aspects", "compel")

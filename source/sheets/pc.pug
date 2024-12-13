@@ -1,0 +1,67 @@
+div.character
+    input(type="hidden", name="attr_sheetType", value="pc").sheet-typetoggle
+    div.pc
+        div.flexCol.flexGap10
+            div.flexRow.flexGap10
+                div.flexRow.flexGap10
+                    +virtue("Bear", "Strength")
+                    +virtue("Elk", "Cunning")
+                    +virtue("Falcon", "Courage")
+                    +virtue("Fox", "Beauty")
+                    +virtue("Serpent", "Wisdom")
+                    +virtue("Wolf", "Prowess")
+                div.flexCol.flexGap10
+                    select(name="attr_roll_virtue")
+                        +virtueOption("Strength")
+                        +virtueOption("Cunning")
+                        +virtueOption("Courage")
+                        +virtueOption("Beauty")
+                        +virtueOption("Wisdom")
+                        +virtueOption("Prowess")
+                    input(type="number", name="attr_num_of_d6" readonly="true").invisible
+                    button(type="roll", value="/roll @{num_of_d6}d6" name="roll_virtue")
+
+div.marginTop50
+input(type="hidden", name=`attr_sheetTab` value="concept").sheet-tabstoggle
+
+div.flexrow
+    span
+        button(type="action" name="act_concept").sheet-button0 Concept
+    span
+        button(type="action" name="act_devotions").sheet-button1 Devotions
+    span
+        button(type="action" name="act_aspects").sheet-button2 Aspects
+    span
+        button(type="action" name="act_maneuvers").sheet-button3 Maneuvers
+    span
+        button(type="action" name="act_contacts").sheet-button4 Contacts
+    span
+        button(type="action" name="act_invokes").sheet-button5 Invokes
+    span
+        button(type="action" name="act_equipment").sheet-button6 Equipment
+    span
+        button(type="action" name="act_notes").sheet-button7 Notes
+
+div.sheet-concept
+    include ./pc/concept.pug
+
+div.sheet-devotions
+    include ./pc/devotions.pug
+
+div.sheet-aspects
+    include ./pc/aspects.pug
+
+div.sheet-maneuvers
+    include ./pc/maneuvers.pug
+
+div.sheet-contacts
+    include ./pc/contacts.pug
+
+div.sheet-invokes
+    include ./pc/invokes.pug
+
+div.sheet-equipment
+    include ./pc/equipment.pug
+
+div.sheet-notes
+    include ./pc/notes.pug
