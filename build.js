@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+
+const { uniq } = require("lodash");
+
 // Configuration
 const config = {
     enableBabel: true, // change to false to disable babel
@@ -43,11 +46,14 @@ if (config.enableBabel && !config.pretty) {
         console.log(err);
     }
 }
+const { dirname } = require("path");
+const includePaths = uniq(require("glob").globSync('source/**/*.scss').map(dirname));
 
 // Build CSS file
 sass.render({
     file: "source/hotb.scss",
     outputStyle: config.pretty ? "expanded" : "compressed",
+    includePaths,
 }, (error, result) => {
     if (!error) {
         const cssOutput = result.css.toString("utf8").replace(/^@charset "UTF-8";\s*/, "").replace(/^\uFEFF/, "").replace(/\n\n/g, "\n");

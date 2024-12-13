@@ -4,7 +4,9 @@
   "main": "index.js",
   "watch": {
     "build": {
-      "patterns": ["*"],
+      "patterns": [
+        "*"
+      ],
       "extensions": "js,pug,scss"
     }
   },
@@ -16,8 +18,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "glob": "^11.0.0",
     "jstransformer": "^1.0.0",
     "jstransformer-babel": "^2.1.0",
+    "lodash": "^4.17.21",
     "node-sass": "^9.0.0",
     "npm-watch": "^0.13.0",
     "pug": "^3.0.3"

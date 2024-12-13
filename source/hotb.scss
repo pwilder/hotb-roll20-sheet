@@ -148,39 +148,7 @@ div.keyValueInput label:after { content: ":"; }
 }
 
 /* New styles */
-/* PC Tabs */
-.charsheet .sheet-concept,
-.charsheet .sheet-devotions,
-.charsheet .sheet-aspects,
-.charsheet .sheet-maneuvers,
-.charsheet .sheet-contacts,
-.charsheet .sheet-invokes,
-.charsheet .sheet-equipment,
-.charsheet .sheet-notes {
-  display: none;
-}
-
-/* style the active button */
-.charsheet .sheet-tabstoggle[value="concept"] ~ div .sheet-button0 {outline: 2px solid red;}
-.charsheet .sheet-tabstoggle[value="devotions"] ~ div .sheet-button1 {outline: 2px solid red;}
-.charsheet .sheet-tabstoggle[value="aspects"] ~ div .sheet-button2 {outline: 2px solid red;}
-.charsheet .sheet-tabstoggle[value="maneuvers"] ~ div .sheet-button3 {outline: 2px solid red;}
-.charsheet .sheet-tabstoggle[value="contacts"] ~ div .sheet-button4 {outline: 2px solid red;}
-.charsheet .sheet-tabstoggle[value="invokes"] ~ div .sheet-button5 {outline: 2px solid red;}
-.charsheet .sheet-tabstoggle[value="equipment"] ~ div .sheet-button6 {outline: 2px solid red;}
-.charsheet .sheet-tabstoggle[value="notes"] ~ div .sheet-button7 {outline: 2px solid red;}
-
-/* show the selected tab */
-.charsheet .sheet-tabstoggle[value="concept"] ~ div.sheet-concept,
-.charsheet .sheet-tabstoggle[value="devotions"] ~ div.sheet-devotions,
-.charsheet .sheet-tabstoggle[value="aspects"] ~ div.sheet-aspects,
-.charsheet .sheet-tabstoggle[value="maneuvers"] ~ div.sheet-maneuvers,
-.charsheet .sheet-tabstoggle[value="contacts"] ~ div.sheet-contacts,
-.charsheet .sheet-tabstoggle[value="invokes"] ~ div.sheet-invokes,
-.charsheet .sheet-tabstoggle[value="equipment"] ~ div.sheet-equipment,
-.charsheet .sheet-tabstoggle[value="notes"] ~ div.sheet-notes {
-  display: block;
-}
+@import "pc";
 
 /*Grid properties*/
 .form-group {
