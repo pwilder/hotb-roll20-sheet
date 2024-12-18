@@ -32,48 +32,46 @@ div.character
                         input(type="number", name=`attr_bonus-dice` value="0").textAlignCenter
 
                     button(type="roll", value="@{risk_template}" name="roll_virtue")
+        div.marginTop50
+        input(type="hidden", name=`attr_sheetTab` value="concept").sheet-tabstoggle
+        div.flexrow
+            span
+                button(type="action" name="act_concept").sheet-button0 Concept
+            span
+                button(type="action" name="act_devotions").sheet-button1 Devotions
+            span
+                button(type="action" name="act_aspects").sheet-button2 Aspects
+            span
+                button(type="action" name="act_maneuvers").sheet-button3 Maneuvers
+            span
+                button(type="action" name="act_contacts").sheet-button4 Contacts
+            span
+                button(type="action" name="act_invokes").sheet-button5 Invokes
+            span
+                button(type="action" name="act_equipment").sheet-button6 Equipment
+            span
+                button(type="action" name="act_notes").sheet-button7 Notes
 
-div.marginTop50
-input(type="hidden", name=`attr_sheetTab` value="concept").sheet-tabstoggle
+        div.sheet-concept
+            include ./pc/concept.pug
 
-div.flexrow
-    span
-        button(type="action" name="act_concept").sheet-button0 Concept
-    span
-        button(type="action" name="act_devotions").sheet-button1 Devotions
-    span
-        button(type="action" name="act_aspects").sheet-button2 Aspects
-    span
-        button(type="action" name="act_maneuvers").sheet-button3 Maneuvers
-    span
-        button(type="action" name="act_contacts").sheet-button4 Contacts
-    span
-        button(type="action" name="act_invokes").sheet-button5 Invokes
-    span
-        button(type="action" name="act_equipment").sheet-button6 Equipment
-    span
-        button(type="action" name="act_notes").sheet-button7 Notes
+        div.sheet-devotions
+            include ./pc/devotions.pug
 
-div.sheet-concept
-    include ./pc/concept.pug
+        div.sheet-aspects
+            include ./pc/aspects.pug
 
-div.sheet-devotions
-    include ./pc/devotions.pug
+        div.sheet-maneuvers
+            include ./pc/maneuvers.pug
 
-div.sheet-aspects
-    include ./pc/aspects.pug
+        div.sheet-contacts
+            include ./pc/contacts.pug
 
-div.sheet-maneuvers
-    include ./pc/maneuvers.pug
+        div.sheet-invokes
+            include ./pc/invokes.pug
 
-div.sheet-contacts
-    include ./pc/contacts.pug
+        div.sheet-equipment
+            include ./pc/equipment.pug
 
-div.sheet-invokes
-    include ./pc/invokes.pug
-
-div.sheet-equipment
-    include ./pc/equipment.pug
-
-div.sheet-notes
-    include ./pc/notes.pug
+        div.sheet-notes
+            include ./pc/notes.pug
