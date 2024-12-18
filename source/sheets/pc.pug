@@ -18,8 +18,20 @@ div.character
                         +virtueOption("Beauty")
                         +virtueOption("Wisdom")
                         +virtueOption("Prowess")
-                    input(type="number", name="attr_num_of_d6" readonly="true").invisible
-                    button(type="roll", value="/roll @{num_of_d6}d6" name="roll_virtue")
+                    input(type="number", name="attr_risk_template" readonly="true").invisible
+                    div.form-group
+                        label Public Name
+                        input(type="checkbox", name="attr_public-name").sheet-toggle-show
+                        label Invoke
+                        input(type="checkbox", name="attr_invoke").sheet-toggle-show
+                        label Tag
+                        input(type="checkbox", name="attr_tag").sheet-toggle-show
+                        label Wager
+                        input(type="number", name=`attr_wager` value="0").textAlignCenter
+                        label Bonus Dice
+                        input(type="number", name=`attr_bonus-dice` value="0").textAlignCenter
+
+                    button(type="roll", value="@{risk_template}" name="roll_virtue")
 
 div.marginTop50
 input(type="hidden", name=`attr_sheetTab` value="concept").sheet-tabstoggle

@@ -1,27 +1,80 @@
 <script type="text/worker">
 // Automatically updates the number of d6s based on the selected attribute
-on("change:roll_virtue change:Strength change:Cunning change:Courage change:Beauty change:Wisdom change:Prowess", function() {
-    console.log("Sheet Worker triggered");
-    getAttrs(["roll_virtue", "Strength", "Cunning", "Courage", "Beauty", "Wisdom", "Prowess"], function(values) {
-        let selectedAttribute = values.roll_virtue;
-        let numberOfDice = 0;
 
-        switch (selectedAttribute) {
-            case "Strength":
-                numberOfDice = parseInt(values.Strength) || 0;
-                break;
-            // case "dexterity":
-            default:
-                numberOfDice = parseInt(values.Cunning) + parseInt(values.Strength) || 0;
-                break;
-            // case "constitution":
-            //     numberOfDice = parseInt(values.constitution) || 0;
-            //     break;
+const selection = ["roll_virtue"];
+const virtues = ["Strength", "Cunning", "Courage", "Beauty", "Wisdome", "Prowess"];
+const bonusDice = ["public-name", "invoke", "tag", "bonus-dice"];
+const negativeDice = ["wager"];
+
+const attrs = [...selection, ...virtues, ...bonusDice, ...negativeDice];
+const events = attrs.map((val) => `change:${val}`);
+
+const ON = 'on';
+
+const safeParseInt = (val) => {
+    try {
+        return parseInt(val)
+    } catch (err) {
+        return 0;
+    }
+}
+
+on(events.join(" "), function() {
+    console.log("Sheet Worker triggered");
+    getAttrs(attrs, function(values) {
+        console.log(JSON.stringify(values));
+        const selectedAttribute = values.roll_virtue;
+        const wager = safeParseInt(values.wager);
+
+
+        if (wager < 0) {
+            setAttrs({
+                risk_template: `Positive values only for wagers please.`,
+            });
+            return;
         }
+
+        const bonusDice = safeParseInt(values['bonus-dice']);
+
+        const templateObj = {
+            name: 'Risk Roll',
+            [selectedAttribute]: parseInt(values[selectedAttribute]),
+            ...(values['public-name'] === ON && { 'Public Name': 1 }),
+            ...(values.invoke === ON && { 'Invoke': 3 }),
+            ...(values.tag === ON && { 'Tag': 2 }),
+            ...(wager && { 'Wager': wager }),
+            ...(bonusDice && { 'Bonus Dice': bonusDice }),
+        };
+
+        const finalDieCount = Object.entries(templateObj).reduce((acc, [key, value]) => {
+            if (!Number.isSafeInteger(value)) {
+                return acc;
+            }
+            if (key === 'Wager') {
+                acc -= value;
+            } else {
+                acc += value;
+            }
+            return acc;
+        }, 0);
+
+        if (finalDieCount < 0) {
+            setAttrs({
+                risk_template: `You are rolling [${finalDieCount}] dice, maybe lower you wagers?`,
+            });
+            return;
+        }
+
+        templateObj.Result = `[[${finalDieCount}d6]]`;
+
+        let templateString = '&{template:default}';
+        templateString += Object.entries(templateObj).map(([key, value]) => `{{${key}=${value}}}`).join(' ');
+
+
 
         // Set the number of d6s to roll
         setAttrs({
-            num_of_d6: numberOfDice,
+            risk_template: templateString,
         });
     });
 });
@@ -77,8 +130,20 @@ buttonList.forEach(button => {
             <option value="Wisdom">Wisdom</option>
             <option value="Prowess">Prowess</option>
           </select>
-          <input class="invisible" type="number" name="attr_num_of_d6" readonly="true"/>
-          <button type="roll" value="/roll @{num_of_d6}d6" name="roll_virtue"></button>
+          <input class="invisible" type="number" name="attr_risk_template" readonly="true"/>
+          <div class="form-group">
+            <label>Public Name</label>
+            <input class="sheet-toggle-show" type="checkbox" name="attr_public-name"/>
+            <label>Invoke</label>
+            <input class="sheet-toggle-show" type="checkbox" name="attr_invoke"/>
+            <label>Tag</label>
+            <input class="sheet-toggle-show" type="checkbox" name="attr_tag"/>
+            <label>Wager</label>
+            <input class="textAlignCenter" type="number" name="attr_wager" value="0"/>
+            <label>Bonus Dice</label>
+            <input class="textAlignCenter" type="number" name="attr_bonus-dice" value="0"/>
+          </div>
+          <button type="roll" value="@{risk_template}" name="roll_virtue"></button>
         </div>
       </div>
     </div>
@@ -187,17 +252,24 @@ buttonList.forEach(button => {
 <div class="sheet-equipment">
   <h2>Equipment</h2>
   <div class="flexRow spaceBetween">
-    <div>
+    <div class="width50">
       <h3>Artifacts</h3>
+      <fieldset class="repeating_artifacts">
+        <div>
+          <label>Name</label>
+          <input type="text" name="attr_items-name"/>
+          <textarea></textarea>
+        </div>
+      </fieldset>
     </div>
-    <div>
+    <div class="width50">
       <h3>Items</h3>
       <fieldset class="repeating_items">
         <div class="form-group double-row">
           <label>Name</label>
-          <input type="text" name="attr_maneuvers-name"/>
-          <label>Page</label>
-          <input type="text" name="attr_maneuvers-page"/>
+          <input type="text" name="attr_items-name"/>
+          <label>Style</label>
+          <input type="text" name="attr_items-Style"/>
         </div>
       </fieldset>
     </div>
@@ -205,4 +277,5 @@ buttonList.forEach(button => {
 </div>
 <div class="sheet-notes">
   <h2>Notes</h2>
+  <textarea></textarea>
 </div>
