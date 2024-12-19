@@ -10,28 +10,36 @@ div.character
                     +virtue("Fox", "Beauty")
                     +virtue("Serpent", "Wisdom")
                     +virtue("Wolf", "Prowess")
-                div.flexCol.flexGap10
-                    select(name="attr_roll_virtue")
-                        +virtueOption("Strength")
-                        +virtueOption("Cunning")
-                        +virtueOption("Courage")
-                        +virtueOption("Beauty")
-                        +virtueOption("Wisdom")
-                        +virtueOption("Prowess")
+                div(style="border: groove; padding: 5px").flexCol.flexGap10
                     input(type="number", name="attr_risk_template" readonly="true").invisible
                     div.form-group
+                        label Virtue
+                        div.flexRow
+                            select(name="attr_roll_virtue", style="width: 150px")
+                                +virtueOption("Strength")
+                                +virtueOption("Cunning")
+                                +virtueOption("Courage")
+                                +virtueOption("Beauty")
+                                +virtueOption("Wisdom")
+                                +virtueOption("Prowess")
                         label Public Name
-                        input(type="checkbox", name="attr_public-name").sheet-toggle-show
+                        input(type="checkbox", name="attr_public_name").sheet-toggle-show
                         label Invoke
                         input(type="checkbox", name="attr_invoke").sheet-toggle-show
                         label Tag
                         input(type="checkbox", name="attr_tag").sheet-toggle-show
                         label Wager
-                        input(type="number", name=`attr_wager` value="0").textAlignCenter
+                        div.flexRow
+                            input(type="number", name=`attr_wager` value="0").textAlignCenter
                         label Bonus Dice
-                        input(type="number", name=`attr_bonus-dice` value="0").textAlignCenter
-
-                    button(type="roll", value="@{risk_template}" name="roll_virtue")
+                        div.flexRow
+                            input(type="number", name=`attr_bonus_dice` value="0").textAlignCenter
+                        label Dice Rolled
+                        div.flexRow
+                            input(type="number", name=`attr_dice_count` readonly).textAlignCenter
+                    div.flexRow
+                        button(type="button", name="act_update_roll") Update
+                        button(type="roll", value="@{risk_template}" name="roll_virtue")
         div.marginTop50
         input(type="hidden", name=`attr_sheetTab` value="concept").sheet-tabstoggle
         div.flexrow

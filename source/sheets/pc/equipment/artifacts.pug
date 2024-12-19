@@ -1,6 +1,8 @@
 h3 Artifacts
 fieldset.repeating_artifacts
-    div
-        label Name
-        +textInput("items", "name")
-        textarea
+    div(style="gap: 10px").flexCol
+        div(style="width: 100%").flexRow
+            label Name
+            +textInput("items", "name")
+        div(style="width: 97%")
+            textarea

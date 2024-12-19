@@ -1,10 +1,10 @@
 <script type="text/worker">
 // Automatically updates the number of d6s based on the selected attribute
 
-const selection = ["roll_virtue"];
-const virtues = ["Strength", "Cunning", "Courage", "Beauty", "Wisdome", "Prowess"];
-const bonusDice = ["public-name", "invoke", "tag", "bonus-dice"];
-const negativeDice = ["wager"];
+const selection = ['roll_virtue'];
+const virtues = ['Strength', 'Cunning', 'Courage', 'Beauty', 'Wisdom', 'Prowess'];
+const bonusDice = ['public_name', 'invoke', 'tag', 'bonus_dice'];
+const negativeDice = ['wager'];
 
 const attrs = [...selection, ...virtues, ...bonusDice, ...negativeDice];
 const events = attrs.map((val) => `change:${val}`);
@@ -19,8 +19,9 @@ const safeParseInt = (val) => {
     }
 }
 
-on(events.join(" "), function() {
-    console.log("Sheet Worker triggered");
+const eventString = events.join(' ');
+
+on(eventString, function() {
     getAttrs(attrs, function(values) {
         console.log(JSON.stringify(values));
         const selectedAttribute = values.roll_virtue;
@@ -30,16 +31,17 @@ on(events.join(" "), function() {
         if (wager < 0) {
             setAttrs({
                 risk_template: `Positive values only for wagers please.`,
+                dice_count: 0,
             });
             return;
         }
 
-        const bonusDice = safeParseInt(values['bonus-dice']);
+        const bonusDice = safeParseInt(values.bonus_dice);
 
         const templateObj = {
             name: 'Risk Roll',
             [selectedAttribute]: parseInt(values[selectedAttribute]),
-            ...(values['public-name'] === ON && { 'Public Name': 1 }),
+            ...(values.public_name === ON && { 'Public Name': 1 }),
             ...(values.invoke === ON && { 'Invoke': 3 }),
             ...(values.tag === ON && { 'Tag': 2 }),
             ...(wager && { 'Wager': wager }),
@@ -61,6 +63,7 @@ on(events.join(" "), function() {
         if (finalDieCount < 0) {
             setAttrs({
                 risk_template: `You are rolling [${finalDieCount}] dice, maybe lower you wagers?`,
+                dice_count: 0,
             });
             return;
         }
@@ -75,11 +78,12 @@ on(events.join(" "), function() {
         // Set the number of d6s to roll
         setAttrs({
             risk_template: templateString,
+            dice_count: finalDieCount,
         });
     });
 });
 
-const buttonList = ["concept", "devotions", "aspects", "maneuvers", "contacts", "invokes", "equipment", "notes"];
+const buttonList = ['concept', 'devotions', 'aspects', 'maneuvers', 'contacts', 'invokes', 'equipment', 'notes'];
 buttonList.forEach(button => {
     on(`clicked:${button}`, function() {
         setAttrs({
@@ -88,7 +92,7 @@ buttonList.forEach(button => {
     });
 });
 </script>
-<div>
+<div class="invisible">
   <label>Sheet Type:
     <select name="attr_sheetType">
       <option value="pc" selected="true">PC</option>
@@ -121,29 +125,43 @@ buttonList.forEach(button => {
             <input class="textAlignCenter" type="number" name="attr_Prowess" value="0"/>
           </div>
         </div>
-        <div class="flexCol flexGap10">
-          <select name="attr_roll_virtue">
-            <option value="Strength">Strength</option>
-            <option value="Cunning">Cunning</option>
-            <option value="Courage">Courage</option>
-            <option value="Beauty">Beauty</option>
-            <option value="Wisdom">Wisdom</option>
-            <option value="Prowess">Prowess</option>
-          </select>
+        <div class="flexCol flexGap10" style="border: groove; padding: 5px">
           <input class="invisible" type="number" name="attr_risk_template" readonly="true"/>
           <div class="form-group">
+            <label>Virtue</label>
+            <div class="flexRow">
+              <select name="attr_roll_virtue" style="width: 150px">
+                <option value="Strength">Strength</option>
+                <option value="Cunning">Cunning</option>
+                <option value="Courage">Courage</option>
+                <option value="Beauty">Beauty</option>
+                <option value="Wisdom">Wisdom</option>
+                <option value="Prowess">Prowess</option>
+              </select>
+            </div>
             <label>Public Name</label>
-            <input class="sheet-toggle-show" type="checkbox" name="attr_public-name"/>
+            <input class="sheet-toggle-show" type="checkbox" name="attr_public_name"/>
             <label>Invoke</label>
             <input class="sheet-toggle-show" type="checkbox" name="attr_invoke"/>
             <label>Tag</label>
             <input class="sheet-toggle-show" type="checkbox" name="attr_tag"/>
             <label>Wager</label>
-            <input class="textAlignCenter" type="number" name="attr_wager" value="0"/>
+            <div class="flexRow">
+              <input class="textAlignCenter" type="number" name="attr_wager" value="0"/>
+            </div>
             <label>Bonus Dice</label>
-            <input class="textAlignCenter" type="number" name="attr_bonus-dice" value="0"/>
+            <div class="flexRow">
+              <input class="textAlignCenter" type="number" name="attr_bonus_dice" value="0"/>
+            </div>
+            <label>Dice Rolled</label>
+            <div class="flexRow">
+              <input class="textAlignCenter" type="number" name="attr_dice_count" readonly="readonly"/>
+            </div>
           </div>
-          <button type="roll" value="@{risk_template}" name="roll_virtue"></button>
+          <div class="flexRow">
+            <button type="button" name="act_update_roll">Update</button>
+            <button type="roll" value="@{risk_template}" name="roll_virtue"></button>
+          </div>
         </div>
       </div>
     </div>
@@ -185,7 +203,7 @@ buttonList.forEach(button => {
         </div>
         <div class="form-group">
           <label>Blessings</label>
-          <input type="text" name="attr_devotions-blessings"/>
+          <input type="text" name="attr_devotions-blessings" style="margin-left: -5px; width: 101%"/>
         </div>
       </fieldset>
     </div>
@@ -249,18 +267,22 @@ buttonList.forEach(button => {
     </div>
     <div class="sheet-equipment">
       <h2>Equipment</h2>
-      <div class="flexRow spaceBetween">
-        <div class="width50">
+      <div class="flexGap10" style="display: flex; flex-direction: row; justify-content: center;">
+        <div style="width: 40%">
           <h3>Artifacts</h3>
           <fieldset class="repeating_artifacts">
-            <div>
-              <label>Name</label>
-              <input type="text" name="attr_items-name"/>
-              <textarea></textarea>
+            <div class="flexCol" style="gap: 10px">
+              <div class="flexRow" style="width: 100%">
+                <label>Name</label>
+                <input type="text" name="attr_items-name"/>
+              </div>
+              <div style="width: 97%">
+                <textarea></textarea>
+              </div>
             </div>
           </fieldset>
         </div>
-        <div class="width50">
+        <div style="width: 40%">
           <h3>Items</h3>
           <fieldset class="repeating_items">
             <div class="form-group double-row">
