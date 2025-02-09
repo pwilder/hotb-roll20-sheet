@@ -9,3 +9,31 @@ mixin virtueOption(attribute)
 
 mixin textInput(section, name)
     input(type="text", name=`attr_${section}-${name}`)
+
+mixin region(number)
+    input(type="text" name=`attr_regions-name-${number}` style="width: 150px;")
+    input(type="number" name=`attr_regions-rank-${number}` style="width: 50px;")
+    input(type="text" name=`attr_regions-produces-${number}` style="width: 150px;")
+    input(type="text" name=`attr_regions-holdings-${number}` style="width: 150px;")
+    input(type="number" name=`attr_regions-loyalty-${number}` style="width: 50px;")
+    input(type="number" name=`attr_regions-security-${number}` style="width: 50px;")
+
+mixin vassal(number)
+    input(type="text" name=`attr_vassals-name-${number}` style="width: 150px;")
+    input(type="number" name=`attr_vassals-rank-${number}` style="width: 50px;")
+    input(type="text" name=`attr_vassals-costs-${number}` style="width: 150px;")
+    input(type="checkbox", name=`attr_vassals-paid-${number}`)
+
+mixin season(seasonName)
+    - const width = 300;
+    - const height = 100;
+    div(style="display: flex; flex-direction: column")
+        label= seasonName
+        label Planning
+        textarea(style=`width: ${width}px; height: ${height}px` name=`attr_${seasonName}-planning-name`)
+        label Trouble
+        textarea(style=`width: ${width}px; height: ${height}px` name=`attr_${seasonName}-trouble-name`)
+        label Action
+        textarea(style=`width: ${width}px; height: ${height}px` name=`attr_${seasonName}-action-name`)
+        label Harvest
+        textarea(style=`width: ${width}px; height: ${height}px` name=`attr_${seasonName}-harvest-name`)

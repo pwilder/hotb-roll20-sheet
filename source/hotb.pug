@@ -1,9 +1,14 @@
 include ./mixins/mixins.pug
 
-div.invisible
+div
     label Sheet Type:
         select(name="attr_sheetType")
-            option(value="pc", selected="true") PC
-            option(value="npc") NPC
-|
-include ./sheets/pc.pug
+            option(value="pc") PC
+            option(value="provinces") Provinces
+            option(value="years", selected="true") Years
+
+div.character
+    input(type="hidden", name="attr_sheetType", value="pc").sheet-typetoggle
+    include ./sheets/pc.pug
+    include ./sheets/provinces.pug
+    include ./sheets/years.pug

@@ -1,0 +1,6 @@
+@import "regions";
+@import "vassals";
+
+div:has(> input.province-toggle-show:not(:checked)) ~ div {
+  display: none;
+}

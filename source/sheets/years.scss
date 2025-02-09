@@ -1,0 +1,3 @@
+div:has(> input.year-toggle-show:not(:checked)) ~ div {
+  display: none;
+}

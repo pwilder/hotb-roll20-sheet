@@ -1,0 +1,16 @@
+div.years
+    fieldset.repeating_provinces
+        div(style="margin-top: 10px; margin-bottom: 10px")
+            div(style="display: flex; flex-direction: row")
+                input(type="checkbox" checked="true").year-toggle-show
+                div.keyValueInput
+                    label Year
+                    input(type="text", name=`attr_year-name`)
+            div(style="margin-top: 20px")
+                div(style="display: flex; flex-direction: column; gap: 40px")
+                    div(style="display: flex; flex-direction: row; gap: 40px")
+                        +season("Spring")
+                        +season("Autumn")
+                    div(style="display: flex; flex-direction: row; gap: 40px")
+                        +season("Summer")
+                        +season("Winter")

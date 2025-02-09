@@ -1,0 +1,7 @@
+div(style="margin-top: 20px").vassals-form-group
+    label Vassals
+    label Rank
+    label Costs
+    label Paid
+    - for (let currentVassal = 0; currentVassal < 13; currentVassal++)
+        +vassal(currentVassal)

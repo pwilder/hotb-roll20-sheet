@@ -49,6 +49,8 @@ if (config.enableBabel && !config.pretty) {
 const { dirname } = require("path");
 const includePaths = uniq(require("glob").globSync('source/**/*.scss').map(dirname));
 
+// console.log(includePaths);
+
 // Build CSS file
 sass.render({
     file: "source/hotb.scss",

@@ -92,11 +92,12 @@ buttonList.forEach(button => {
     });
 });
 </script>
-<div class="invisible">
+<div>
   <label>Sheet Type:
     <select name="attr_sheetType">
-      <option value="pc" selected="true">PC</option>
-      <option value="npc">NPC</option>
+      <option value="pc">PC</option>
+      <option value="provinces">Provinces</option>
+      <option value="years" selected="true">Years</option>
     </select>
   </label>
 </div>
@@ -299,5 +300,215 @@ buttonList.forEach(button => {
       <h2>Notes</h2>
       <textarea></textarea>
     </div>
+  </div>
+  <div class="provinces">
+    <fieldset class="repeating_provinces">
+      <div style="margin-top: 10px; margin-bottom: 10px">
+        <div style="display: flex; flex-direction: row">
+          <input class="province-toggle-show" type="checkbox"/>
+          <div class="keyValueInput">
+            <label>Province</label>
+            <input type="text" name="attr_province-name"/>
+          </div>
+        </div>
+        <div class="province-body" style="margin-top: 10px">
+          <div class="regions-form-group">
+            <label>Region</label>
+            <label>Rank</label>
+            <label>Produces</label>
+            <label>Holdings</label>
+            <label>Loyalty</label>
+            <label>Security</label>
+            <input type="text" name="attr_regions-name-0" style="width: 150px;"/>
+            <input type="number" name="attr_regions-rank-0" style="width: 50px;"/>
+            <input type="text" name="attr_regions-produces-0" style="width: 150px;"/>
+            <input type="text" name="attr_regions-holdings-0" style="width: 150px;"/>
+            <input type="number" name="attr_regions-loyalty-0" style="width: 50px;"/>
+            <input type="number" name="attr_regions-security-0" style="width: 50px;"/>
+            <input type="text" name="attr_regions-name-1" style="width: 150px;"/>
+            <input type="number" name="attr_regions-rank-1" style="width: 50px;"/>
+            <input type="text" name="attr_regions-produces-1" style="width: 150px;"/>
+            <input type="text" name="attr_regions-holdings-1" style="width: 150px;"/>
+            <input type="number" name="attr_regions-loyalty-1" style="width: 50px;"/>
+            <input type="number" name="attr_regions-security-1" style="width: 50px;"/>
+            <input type="text" name="attr_regions-name-2" style="width: 150px;"/>
+            <input type="number" name="attr_regions-rank-2" style="width: 50px;"/>
+            <input type="text" name="attr_regions-produces-2" style="width: 150px;"/>
+            <input type="text" name="attr_regions-holdings-2" style="width: 150px;"/>
+            <input type="number" name="attr_regions-loyalty-2" style="width: 50px;"/>
+            <input type="number" name="attr_regions-security-2" style="width: 50px;"/>
+            <input type="text" name="attr_regions-name-3" style="width: 150px;"/>
+            <input type="number" name="attr_regions-rank-3" style="width: 50px;"/>
+            <input type="text" name="attr_regions-produces-3" style="width: 150px;"/>
+            <input type="text" name="attr_regions-holdings-3" style="width: 150px;"/>
+            <input type="number" name="attr_regions-loyalty-3" style="width: 50px;"/>
+            <input type="number" name="attr_regions-security-3" style="width: 50px;"/>
+            <input type="text" name="attr_regions-name-4" style="width: 150px;"/>
+            <input type="number" name="attr_regions-rank-4" style="width: 50px;"/>
+            <input type="text" name="attr_regions-produces-4" style="width: 150px;"/>
+            <input type="text" name="attr_regions-holdings-4" style="width: 150px;"/>
+            <input type="number" name="attr_regions-loyalty-4" style="width: 50px;"/>
+            <input type="number" name="attr_regions-security-4" style="width: 50px;"/>
+            <input type="text" name="attr_regions-name-5" style="width: 150px;"/>
+            <input type="number" name="attr_regions-rank-5" style="width: 50px;"/>
+            <input type="text" name="attr_regions-produces-5" style="width: 150px;"/>
+            <input type="text" name="attr_regions-holdings-5" style="width: 150px;"/>
+            <input type="number" name="attr_regions-loyalty-5" style="width: 50px;"/>
+            <input type="number" name="attr_regions-security-5" style="width: 50px;"/>
+            <input type="text" name="attr_regions-name-6" style="width: 150px;"/>
+            <input type="number" name="attr_regions-rank-6" style="width: 50px;"/>
+            <input type="text" name="attr_regions-produces-6" style="width: 150px;"/>
+            <input type="text" name="attr_regions-holdings-6" style="width: 150px;"/>
+            <input type="number" name="attr_regions-loyalty-6" style="width: 50px;"/>
+            <input type="number" name="attr_regions-security-6" style="width: 50px;"/>
+            <input type="text" name="attr_regions-name-7" style="width: 150px;"/>
+            <input type="number" name="attr_regions-rank-7" style="width: 50px;"/>
+            <input type="text" name="attr_regions-produces-7" style="width: 150px;"/>
+            <input type="text" name="attr_regions-holdings-7" style="width: 150px;"/>
+            <input type="number" name="attr_regions-loyalty-7" style="width: 50px;"/>
+            <input type="number" name="attr_regions-security-7" style="width: 50px;"/>
+            <input type="text" name="attr_regions-name-8" style="width: 150px;"/>
+            <input type="number" name="attr_regions-rank-8" style="width: 50px;"/>
+            <input type="text" name="attr_regions-produces-8" style="width: 150px;"/>
+            <input type="text" name="attr_regions-holdings-8" style="width: 150px;"/>
+            <input type="number" name="attr_regions-loyalty-8" style="width: 50px;"/>
+            <input type="number" name="attr_regions-security-8" style="width: 50px;"/>
+            <input type="text" name="attr_regions-name-9" style="width: 150px;"/>
+            <input type="number" name="attr_regions-rank-9" style="width: 50px;"/>
+            <input type="text" name="attr_regions-produces-9" style="width: 150px;"/>
+            <input type="text" name="attr_regions-holdings-9" style="width: 150px;"/>
+            <input type="number" name="attr_regions-loyalty-9" style="width: 50px;"/>
+            <input type="number" name="attr_regions-security-9" style="width: 50px;"/>
+          </div>
+          <div class="vassals-form-group" style="margin-top: 20px">
+            <label>Vassals</label>
+            <label>Rank</label>
+            <label>Costs</label>
+            <label>Paid</label>
+            <input type="text" name="attr_vassals-name-0" style="width: 150px;"/>
+            <input type="number" name="attr_vassals-rank-0" style="width: 50px;"/>
+            <input type="text" name="attr_vassals-costs-0" style="width: 150px;"/>
+            <input type="checkbox" name="attr_vassals-paid-0"/>
+            <input type="text" name="attr_vassals-name-1" style="width: 150px;"/>
+            <input type="number" name="attr_vassals-rank-1" style="width: 50px;"/>
+            <input type="text" name="attr_vassals-costs-1" style="width: 150px;"/>
+            <input type="checkbox" name="attr_vassals-paid-1"/>
+            <input type="text" name="attr_vassals-name-2" style="width: 150px;"/>
+            <input type="number" name="attr_vassals-rank-2" style="width: 50px;"/>
+            <input type="text" name="attr_vassals-costs-2" style="width: 150px;"/>
+            <input type="checkbox" name="attr_vassals-paid-2"/>
+            <input type="text" name="attr_vassals-name-3" style="width: 150px;"/>
+            <input type="number" name="attr_vassals-rank-3" style="width: 50px;"/>
+            <input type="text" name="attr_vassals-costs-3" style="width: 150px;"/>
+            <input type="checkbox" name="attr_vassals-paid-3"/>
+            <input type="text" name="attr_vassals-name-4" style="width: 150px;"/>
+            <input type="number" name="attr_vassals-rank-4" style="width: 50px;"/>
+            <input type="text" name="attr_vassals-costs-4" style="width: 150px;"/>
+            <input type="checkbox" name="attr_vassals-paid-4"/>
+            <input type="text" name="attr_vassals-name-5" style="width: 150px;"/>
+            <input type="number" name="attr_vassals-rank-5" style="width: 50px;"/>
+            <input type="text" name="attr_vassals-costs-5" style="width: 150px;"/>
+            <input type="checkbox" name="attr_vassals-paid-5"/>
+            <input type="text" name="attr_vassals-name-6" style="width: 150px;"/>
+            <input type="number" name="attr_vassals-rank-6" style="width: 50px;"/>
+            <input type="text" name="attr_vassals-costs-6" style="width: 150px;"/>
+            <input type="checkbox" name="attr_vassals-paid-6"/>
+            <input type="text" name="attr_vassals-name-7" style="width: 150px;"/>
+            <input type="number" name="attr_vassals-rank-7" style="width: 50px;"/>
+            <input type="text" name="attr_vassals-costs-7" style="width: 150px;"/>
+            <input type="checkbox" name="attr_vassals-paid-7"/>
+            <input type="text" name="attr_vassals-name-8" style="width: 150px;"/>
+            <input type="number" name="attr_vassals-rank-8" style="width: 50px;"/>
+            <input type="text" name="attr_vassals-costs-8" style="width: 150px;"/>
+            <input type="checkbox" name="attr_vassals-paid-8"/>
+            <input type="text" name="attr_vassals-name-9" style="width: 150px;"/>
+            <input type="number" name="attr_vassals-rank-9" style="width: 50px;"/>
+            <input type="text" name="attr_vassals-costs-9" style="width: 150px;"/>
+            <input type="checkbox" name="attr_vassals-paid-9"/>
+            <input type="text" name="attr_vassals-name-10" style="width: 150px;"/>
+            <input type="number" name="attr_vassals-rank-10" style="width: 50px;"/>
+            <input type="text" name="attr_vassals-costs-10" style="width: 150px;"/>
+            <input type="checkbox" name="attr_vassals-paid-10"/>
+            <input type="text" name="attr_vassals-name-11" style="width: 150px;"/>
+            <input type="number" name="attr_vassals-rank-11" style="width: 50px;"/>
+            <input type="text" name="attr_vassals-costs-11" style="width: 150px;"/>
+            <input type="checkbox" name="attr_vassals-paid-11"/>
+            <input type="text" name="attr_vassals-name-12" style="width: 150px;"/>
+            <input type="number" name="attr_vassals-rank-12" style="width: 50px;"/>
+            <input type="text" name="attr_vassals-costs-12" style="width: 150px;"/>
+            <input type="checkbox" name="attr_vassals-paid-12"/>
+          </div>
+          <div style="margin-top: 20px">
+            <label>Resources Stockpile</label>
+            <textarea></textarea>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div class="years">
+    <fieldset class="repeating_provinces">
+      <div style="margin-top: 10px; margin-bottom: 10px">
+        <div style="display: flex; flex-direction: row">
+          <input class="year-toggle-show" type="checkbox" checked="true"/>
+          <div class="keyValueInput">
+            <label>Year</label>
+            <input type="text" name="attr_year-name"/>
+          </div>
+        </div>
+        <div style="margin-top: 20px">
+          <div style="display: flex; flex-direction: column; gap: 40px">
+            <div style="display: flex; flex-direction: row; gap: 40px">
+              <div style="display: flex; flex-direction: column">
+                <label>Spring</label>
+                <label>Planning</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Spring-planning-name"></textarea>
+                <label>Trouble</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Spring-trouble-name"></textarea>
+                <label>Action</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Spring-action-name"></textarea>
+                <label>Harvest</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Spring-harvest-name"></textarea>
+              </div>
+              <div style="display: flex; flex-direction: column">
+                <label>Autumn</label>
+                <label>Planning</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Autumn-planning-name"></textarea>
+                <label>Trouble</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Autumn-trouble-name"></textarea>
+                <label>Action</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Autumn-action-name"></textarea>
+                <label>Harvest</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Autumn-harvest-name"></textarea>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: row; gap: 40px">
+              <div style="display: flex; flex-direction: column">
+                <label>Summer</label>
+                <label>Planning</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Summer-planning-name"></textarea>
+                <label>Trouble</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Summer-trouble-name"></textarea>
+                <label>Action</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Summer-action-name"></textarea>
+                <label>Harvest</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Summer-harvest-name"></textarea>
+              </div>
+              <div style="display: flex; flex-direction: column">
+                <label>Winter</label>
+                <label>Planning</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Winter-planning-name"></textarea>
+                <label>Trouble</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Winter-trouble-name"></textarea>
+                <label>Action</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Winter-action-name"></textarea>
+                <label>Harvest</label>
+                <textarea style="width: 300px; height: 100px" name="attr_Winter-harvest-name"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
   </div>
 </div>

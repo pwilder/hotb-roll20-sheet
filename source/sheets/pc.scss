@@ -33,3 +33,7 @@
 }
 
 @import "grid";
+
+.charsheet input.sheet-toggle-show:not(:checked) ~ div div.sheet-body {
+  display: none;
+}

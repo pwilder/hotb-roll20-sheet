@@ -1,6 +1,7 @@
 /* By deafult, hides all archetypes*/
 .charsheet .pc,
-.charsheet .npc {
+.charsheet .provinces,
+.charsheet .years {
   display: none;
 }
 .invisible {
@@ -8,7 +9,8 @@
 }
 /* show the selected archetype */
 .charsheet .sheet-typetoggle[value="pc"] ~ div.pc,
-.charsheet .sheet-typetoggle[value="npc"] ~ div.npc {
+.charsheet .sheet-typetoggle[value="provinces"] ~ div.provinces,
+.charsheet .sheet-typetoggle[value="years"] ~ div.years {
   display: block;
 }
 .flexCol {
@@ -202,26 +204,26 @@ div.keyValueInput label:after {
 .double-row {
   grid-template-columns: 2fr 4fr 1fr 1fr;
 }
-/*Grid properties*/
-.form-group {
+.charsheet input.sheet-toggle-show:not(:checked) ~ div div.sheet-body {
+  display: none;
+}
+.regions-form-group {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 3fr 1fr 3fr 3fr 1fr 1fr;
   gap: 10px;
   margin-bottom: 10px;
 }
-.form-group label {
-  text-align: right;
+.vassals-form-group {
+  display: grid;
+  grid-template-columns: 3fr 1fr 3fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
 }
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
+div:has(> input.province-toggle-show:not(:checked)) ~ div {
+  display: none;
 }
-.long-second {
-  grid-template-columns: 1fr 5fr;
-}
-.double-row {
-  grid-template-columns: 2fr 4fr 1fr 1fr;
+div:has(> input.year-toggle-show:not(:checked)) ~ div {
+  display: none;
 }
 /* Show/hide */
 .charsheet .sheet-columns {
@@ -231,9 +233,6 @@ div.keyValueInput label:after {
 }
 .charsheet .sheet-columns > * {
   flex: 1;
-}
-.charsheet input.sheet-toggle-show:not(:checked) ~ div div.sheet-body {
-  display: none;
 }
 .item {
   margin: 4px 0;

@@ -1,0 +1,12 @@
+div.provinces
+    fieldset.repeating_provinces
+        div(style="margin-top: 10px; margin-bottom: 10px")
+            div(style="display: flex; flex-direction: row")
+                input(type="checkbox").province-toggle-show
+                div.keyValueInput
+                    label Province
+                    input(type="text", name=`attr_province-name`)
+            div(style="margin-top: 10px").province-body
+                include ./provinces/regions
+                include ./provinces/vassals
+                include ./provinces/resources
